@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<!DOCTYPE html>
+<html lang="en">
+    <head runat="server">
+        <meta charset="utf-8" />
+        <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+        <link href="<%: Url.Content("~/favicon.ico") %>" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <%: Styles.Render("~/Content/css") %>
+        <%: Styles.Render("~/Content/bootstrapcss") %>
+        <%: Scripts.Render("~/bundles/modernizr") %>
+        <!--[if lte IE 8]>: Scripts.Render("~/bundles/iescripts") %><![endif]-->
+    </head>
+    <body>
+		
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h1 id="logo"><%: Html.ActionLink("RealFake Estates", "Index", "Home") %></h1>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                <li class="active"><%: Html.Partial("_LoginPartial") %></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><%: Html.ActionLink("Properties", "Properties", "Search") %></li>
+                            <li><%: Html.ActionLink("Agents", "Agents", "Search") %></li>
+                            <li><%: Html.ActionLink("Custom", "Custom", "Search") %></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
+
+    <div id="page-wrapper">
+        <div id="body">
+            <%--<asp:ContentPlaceHolder ID="FeaturedContent" runat="server" />--%>
+            <section class="content-wrapper main-content clear-fix">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </section>
+        </div>
+
+        <!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="https://github.com/MadisonLiddell" class="icon circle fa-github"><span class="label">Github</span></a></li>
+					</ul>
+                    <ul class="copyright">
+                        <li><p>&copy; <%: DateTime.Now.Year %> - Madison Liddell</p></li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
+        </div>
+        <%: Scripts.Render("~/bundles/jquery") %>
+        <%: Scripts.Render("~/bundles/templatescripts") %>
+        <%: Scripts.Render("~/bundles/bootstrap") %>
+        <asp:ContentPlaceHolder ID="ScriptsSection" runat="server" />
+    </body>
+</html>
