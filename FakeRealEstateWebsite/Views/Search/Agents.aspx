@@ -1,5 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<FakeRealEstateWebsite.Models.agent>>" %>
 
+<script runat="server">
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+</script>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Agents | RealFake Estates
 </asp:Content>
@@ -8,70 +17,40 @@
     
 			<%-- main --%>      
 				<article id="main">
-
+                    
 					<header class="special container">
 						<span class="icon fa-mobile"></span>
 						<h2>Find an<strong> Agent</strong></h2>
                         <br />
-						<ul class="buttons">
-						    <li><a href="#" class="button small">Search</a></li>
-					    </ul>
+                        <% using (Html.BeginForm("Agents", "Search", FormMethod.Get)) %>
+                        <% { %> 
+                           
+                            <%= @Html.TextBox("searchText", null, new { placeholder = "Name, city, or state" })%>
+                            <input type="submit" class="special" value="Search" />
+                        <% } %>
 					</header>
-
-                   
-
 
 					<!-- One -->
 						<section class="wrapper style4 container">
-
-                              <table>
-                                <tr>
-                                    <th>
-                                        <%: Html.DisplayNameFor(model => model.agent_fname) %>
-                                    </th>
-                                    <th>
-                                        <%: Html.DisplayNameFor(model => model.agent_lname) %>
-                                    </th>
-                                    <th>
-                                        <%: Html.DisplayNameFor(model => model.agent_phone) %>
-                                    </th>
-                                    <th>
-                                        <%: Html.DisplayNameFor(model => model.agent_city) %>
-                                    </th>
-                                    <th>
-                                        <%: Html.DisplayNameFor(model => model.agent_state) %>
-                                    </th>
-                                    <th>
-                                        <%: Html.DisplayNameFor(model => model.fk_off_code) %>
-                                    </th>
-                                    <th></th>
-                                </tr>
-
+                            <div class="special container"><h2>Here's the <strong>Agents</strong> we found</h2></div><br />
+                            <div class="row">
                             <% foreach (var item in Model) { %>
-                                <tr>
-                                    <td>
-                                        <%: Html.DisplayFor(modelItem => item.agent_fname) %>
-                                    </td>
-                                    <td>
-                                        <%: Html.DisplayFor(modelItem => item.agent_lname) %>
-                                    </td>
-                                    <td>
-                                        <%: Html.DisplayFor(modelItem => item.agent_phone) %>
-                                    </td>
-                                    <td>
-                                        <%: Html.DisplayFor(modelItem => item.agent_city) %>
-                                    </td>
-                                    <td>
-                                        <%: Html.DisplayFor(modelItem => item.agent_state) %>
-                                    </td>
-                                    <td>
-                                        <%: Html.DisplayFor(modelItem => item.fk_off_code) %>
-                                    </td>
-                                </tr>
+                                  <div class="4u 12u(narrower)">
+
+									<section>
+										<span class="icon featured fa-user"></span>
+										<header>
+											<h3 class ="special"> <%: Html.DisplayFor(modelItem => item.agent_fname) %> <%: Html.DisplayFor(modelItem => item.agent_lname) %></h3>
+										</header>
+										<p>Operating out of <strong><%: Html.DisplayFor(modelItem => item.agent_city) %>, <%: Html.DisplayFor(modelItem => item.agent_state) %> </strong><br />
+                                            Phone: <%: Html.DisplayFor(modelItem => item.agent_phone) %> <br />
+										</p>
+									</section>
+
+								</div>
                             <% } %>
 
-                            </table>
-
+                        </div>
                             <%-- added from two --%>
                                 <%--<section class="wrapper style1 container special">--%>
 							    <%--<div class="row">

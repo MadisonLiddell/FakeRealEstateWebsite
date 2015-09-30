@@ -15,12 +15,25 @@ namespace FakeRealEstateWebsite.Controllers
 
         public ActionResult Index()
         {
+            
             return View();
         }
 
-        public ActionResult Agents()
+        public ActionResult AllAgents()
         {
-            return View(dbContext.agents.ToList());
+            return View("Agents", dbContext.agents.ToList());
+        }
+
+        public ActionResult Agents(string searchText)
+        {
+            if (searchText == null)
+            {
+                return View();
+            }
+            else
+            {
+                return View(dbContext.agents.Where(x => x.agent_fname.StartsWith(searchText) || x.agent_lname.StartsWith(searchText) || x.agent_city.StartsWith(searchText) || x.agent_state.StartsWith(searchText)).ToList());
+            } 
         }
 
         public ActionResult Properties()

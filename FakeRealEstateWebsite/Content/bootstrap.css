@@ -4,13 +4,16 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-html {
-  font-family: sans-serif;
-  -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-}
+/*html {
+        margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+}*/
 body {
-  margin: 0;
+  line-height: 1;
 }
 article,
 aside,
@@ -26,6 +29,7 @@ nav,
 section,
 summary {
   display: block;
+   line-height: 2;
 }
 audio,
 canvas,
@@ -43,11 +47,17 @@ template {
   display: none;
 }
 a {
-  background-color: transparent;
+		-moz-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+		-webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+		-ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+		transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+		color: #3fb1a3;
+		text-decoration: none;
+		/*border-bottom: dotted 1px;*/
 }
 a:active,
 a:hover {
-  outline: 0;
+  border-bottom-color: transparent;
 }
 abbr[title] {
   border-bottom: 1px dotted;
@@ -266,18 +276,18 @@ th {
   src: url('../fonts/glyphicons-halflings-regular.eot');
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
-.glyphicon {
+/*.glyphicon {
   position: relative;
   top: 1px;
   display: inline-block;
   font-family: 'Glyphicons Halflings';
   font-style: normal;
   font-weight: normal;
-  line-height: 1;
+  line-height: 0;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+}*/
 .glyphicon-asterisk:before {
   content: "\2a";
 }
@@ -1081,13 +1091,13 @@ html {
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-body {
+/*body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
-}
+}*/
 input,
 button,
 select,
@@ -1097,12 +1107,12 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color: #96DAD1;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #23527c;
+  color: #3FB1A3;
   text-decoration: underline;
 }
 a:focus {
@@ -1184,10 +1194,11 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.1;
   color: inherit;
+    font-weight: 300;
+    line-height: 1.75em;
+    margin-bottom: 1em;
+    text-transform: uppercase;
 }
 h1 small,
 h2 small,
@@ -1288,7 +1299,7 @@ h6,
   font-size: 12px;
 }
 p {
-  margin: 0 0 10px;
+  margin: 0 0 2em 0;
 }
 .lead {
   margin-bottom: 20px;
@@ -1338,11 +1349,11 @@ mark,
   color: #777;
 }
 .text-primary {
-  color: #337ab7;
+  color: #96DAD1;
 }
 a.text-primary:hover,
 a.text-primary:focus {
-  color: #286090;
+  color: #3FB1A3;
 }
 .text-success {
   color: #3c763d;
@@ -3558,10 +3569,10 @@ tbody.collapse.in {
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
-  border-top: 4px dashed;
+  /*border-top: 4px dashed;
   border-top: 4px solid \9;
   border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
+  border-left: 4px solid transparent;*/
 }
 .dropup,
 .dropdown {
@@ -3615,7 +3626,7 @@ tbody.collapse.in {
 .dropdown-menu > li > a:focus {
   color: #262626;
   text-decoration: none;
-  background-color: #f5f5f5;
+  background: rgba(188, 202, 206, 0.15);
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
@@ -3667,6 +3678,9 @@ tbody.collapse.in {
   bottom: 0;
   left: 0;
   z-index: 990;
+}
+.dropdown:hover .dropdown-menu {
+display: block;
 }
 .pull-right > .dropdown-menu {
   right: 0;
@@ -4264,7 +4278,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-fixed-top .navbar-collapse,
 .navbar-fixed-bottom .navbar-collapse {
-  max-height: 340px;
+  max-height: 300px;
 }
 @media (max-device-width: 480px) and (orientation: landscape) {
   .navbar-fixed-top .navbar-collapse,
@@ -4276,8 +4290,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .container-fluid > .navbar-header,
 .container > .navbar-collapse,
 .container-fluid > .navbar-collapse {
-  margin-right: -15px;
-  margin-left: -15px;
+  /*margin-right: -15px;
+  margin-left: -15px;*/
 }
 @media (min-width: 768px) {
   .container > .navbar-header,
@@ -4369,7 +4383,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav {
-  margin: 7.5px -15px;
+  /*margin: 7.5px -15px;*/
 }
 .navbar-nav > li > a {
   padding-top: 10px;
@@ -4397,6 +4411,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-nav .open .dropdown-menu > li > a:focus {
     background-image: none;
+    -moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	background: rgba(188, 202, 206, 0.15);
   }
 }
 @media (min-width: 768px) {
@@ -4534,7 +4553,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-right {
     float: right !important;
-    margin-right: -15px;
+    /*margin-right: -15px;*/
   }
   .navbar-right ~ .navbar-right {
     margin-right: 0;
@@ -5308,11 +5327,11 @@ a.thumbnail.active {
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
 }
-a.list-group-item,
+/*a.list-group-item,
 button.list-group-item {
   color: #555;
-}
-a.list-group-item .list-group-item-heading,
+}*/
+/*a.list-group-item .list-group-item-heading,
 button.list-group-item .list-group-item-heading {
   color: #333;
 }
@@ -5323,7 +5342,7 @@ button.list-group-item:focus {
   color: #555;
   text-decoration: none;
   background-color: #f5f5f5;
-}
+}*/
 button.list-group-item {
   width: 100%;
   text-align: left;
